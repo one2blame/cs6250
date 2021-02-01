@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="welcome.html">Welcome</a></li><li class="chapter-item "><a href="lesson1/lesson1.html"><strong aria-hidden="true">1.</strong> Lesson 1</a></li><li class="chapter-item "><a href="lesson2/lesson2.html"><strong aria-hidden="true">2.</strong> Lesson 2</a></li></ol>
+                <ol class="chapter"><li class="chapter-item affix "><a href="welcome.html">Welcome</a></li><li class="chapter-item "><a href="lesson1/lesson1.html"><strong aria-hidden="true">1.</strong> Lesson 1</a></li><li class="chapter-item "><a href="lesson2/lesson2.html"><strong aria-hidden="true">2.</strong> Lesson 2</a></li><li class="chapter-item "><a href="lesson3/lesson3.html"><strong aria-hidden="true">3.</strong> Lesson 3</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -429,6 +429,103 @@ receiver's buffer.</li>
 <li><strong>congestion control</strong> - controlling the transmission rate to protect the
 network from congestion.</li>
 </ul>
+<h1><a class="header" href="#intradomain-routing" id="intradomain-routing">Intradomain routing</a></h1>
+<p>This lesson focuses on routing at the Network Layer within a single domain. It
+covers:</p>
+<ul>
+<li>Protocols that determine paths between sources and destinations within a
+single domain.</li>
+<li>Link-state and distance-vector algorithms.</li>
+<li>RIP</li>
+<li>OSPF</li>
+<li>Convergence</li>
+<li>Using routing protocols to steer traffic, avoiding congested links.</li>
+</ul>
+<h2><a class="header" href="#link-state-routing-algorithm" id="link-state-routing-algorithm">Link-state routing algorithm</a></h2>
+<p>The <strong>link-state</strong> routing algorithm essentially mimics Dijkstra's algorithm,
+representing the network as a graph. <code>u</code> is the source node and <code>v</code> is every
+other node in the network. The cost is represented by <code>D(v)</code>, which is the
+current least cost path from <code>u</code> to node <code>v</code>.</p>
+<p>The <code>initialization</code> step of the algorithm determines all the currently known
+least-cost paths from <code>u</code> to its adjacent neighbors. Unknown costs for nodes
+not directly attached to <code>u</code> have a cost of infinity.</p>
+<p>The <code>iterative</code> step of the algorithm follows a loop that is executed for
+every destination node <code>v</code> in the network, continuously discovering nodes,
+costs, and the overall cost for a path of <code>u</code> to <code>v</code>.</p>
+<p>The algorithm exits by returning the shortest paths and their costs from the
+source node to every other node in the network.</p>
+<p>The computational complexity of the <strong>link-state</strong> routing algorithm is
+<strong>O(n^2)</strong>.</p>
+<h2><a class="header" href="#distance-vector-routing-algorithm" id="distance-vector-routing-algorithm">Distance-vector routing algorithm</a></h2>
+<p>The <strong>distance-vector</strong> routing algorithm is:</p>
+<ul>
+<li>iterative</li>
+<li>asynchronous</li>
+<li>distributed</li>
+<li>based on the Bellman Ford Algorithm</li>
+</ul>
+<p>Each node maintains its own distance vector with the costs to reach every other
+node in the network. Occasionally, the routers will advertise its distance
+vector information to adjacent nodes. The adjacent nodes receive that
+information, update their own distance vectors, and exchange with other adjacent
+nodes.</p>
+<h2><a class="header" href="#routing-information-protocol-rip" id="routing-information-protocol-rip">Routing Information Protocol (RIP)</a></h2>
+<p>Based on the <strong>distance-vector</strong> routing algorithm, each node maintains a RIP
+table (Routing Table) which has one row for each subnet in the autonomous
+system. RIP version 2 allows subnet entries to be aggregated using route
+aggregation techniques.</p>
+<p>In RIP, if a router does not hear from its neighbor at least every 180 seconds,
+that neighbor is considered to be no longer reachable. The RIP table is modified
+and changes are propagated throughout the network. Requests and responses are
+sent over UDP, port <code>520</code>, layered on top of IP. RIP is actually implemented at
+the Application Layer. RIP challenges include:</p>
+<ul>
+<li>Updating routes</li>
+<li>Reducing convergence time</li>
+<li>Avoiding loops / counting to infinity</li>
+</ul>
+<h2><a class="header" href="#open-shortest-path-first-ospf" id="open-shortest-path-first-ospf">Open Shortest Path First (OSPF)</a></h2>
+<p>Based on the <strong>link-state</strong> routing algorithm, finds the best path between a
+source and destination router. Introduced as an advancement to RIP, uses
+flooding of link-state information and a Dijkstra least-cost pathing algorithm.
+Advances over RIP include:</p>
+<ul>
+<li>Authentication of messages exchanged between routers</li>
+<li>Options to use multiple same cost paths</li>
+<li>Support for router hierarchy within a domain</li>
+</ul>
+<h3><a class="header" href="#hierarchy" id="hierarchy">Hierarchy</a></h3>
+<p>OSPF autonomous systems can be configured into areas with their own link-state
+routing algorithms - border routers are responsible for routing packets outside
+of the area (the backbone area).</p>
+<h3><a class="header" href="#operation" id="operation">Operation</a></h3>
+<p>A graph of the autonomous system is constructed, then each node considers itself
+the root and computes the shortest path to all subnets, running Dijkstra's
+algorithm locally. Link costs are preconfigured by a network administrator.
+Whenever a link's state changes, the router broadcasts routing information to
+all other routers in the autonomous system.</p>
+<h2><a class="header" href="#definitions-1" id="definitions-1">Definitions</a></h2>
+<ul>
+<li><strong>Forwarding</strong> - a the Network Layer, transferring a packet from an incoming
+link to an outgoing link within a single router.</li>
+<li><strong>Routing</strong> - how routers work together using routing protocols to determine
+the good paths over which the packets travel from the source to the destination
+node.</li>
+<li><strong>intradomain routing algorithms</strong> - routing within the same adminisrative
+domain. Also known as <strong>Interior Gateway Protocols (IGPs)</strong>.</li>
+<li><strong>forwarding information base</strong> - database used when a data packat arrives at
+an interface card of the router, helps the router determine the next hop for the
+packet.</li>
+<li><strong>hot potato routing</strong> - a technique / practice of choosing a path within the
+network by choosing the closes egress point based on intradomain path cost.</li>
+</ul>
+<h2><a class="header" href="#quizzes" id="quizzes">Quizzes</a></h2>
+<p><img src="lesson3/./assets/quiz1.png" alt="quiz1" />
+<img src="lesson3/./assets/quiz2.png" alt="quiz2" /></p>
+<h2><a class="header" href="#references" id="references">References</a></h2>
+<ol>
+<li><a href="lesson3/./pdfs/82.pdf">Experience in Black-box OSPF Measurement</a></li>
+</ol>
 
                     </main>
 
