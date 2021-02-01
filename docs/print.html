@@ -28,7 +28,9 @@
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
+        
         <link rel="stylesheet" href="css/print.css" media="print">
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
@@ -130,9 +132,11 @@
                     <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
+                        
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+                        
                         
                     </div>
                 </div>
@@ -359,6 +363,72 @@ root node. Implementing the Spanning Tree Algorithm, the bridges will coordinate
 to eliminate loops in the network, and offending bridges will no longer forward
 traffic if they deem they are the cause of the loop.</p>
 <h1><a class="header" href="#lesson-2" id="lesson-2">Lesson 2</a></h1>
+<p>This lecture covers the transport layer and mainly focuses on the TCP protocol.</p>
+<h2><a class="header" href="#introduction-to-the-transport-layer" id="introduction-to-the-transport-layer">Introduction to the Transport Layer</a></h2>
+<p>This layer provides and end-to-end connection between two applications that
+are running on different hosts. The transport layer provides this logical
+connection regardless if the hosts are in the same network.</p>
+<ul>
+<li>Messages at the transport layer are called <strong>segments</strong>.</li>
+<li>The transport layer provides functionalities like data transfer integrity,
+flow control, transmission control, etc. - things the Network Layer is unable
+to provide.</li>
+</ul>
+<p>There are two main protocols:</p>
+<ul>
+<li><strong>Transmission Control Protocol (TCP)</strong> - connection-oriented protocol.
+Provides reliable transmission, transmission control, flow control, and
+congestion control.</li>
+<li><strong>User Datagram Protocol (UDP)</strong> - connection-less protocol. Provides no
+congestion control, connection management, or similar overhead / mechanisms.
+Useful for real-time applications that are sensitive to delays. Packet structure
+is as follows:
+<ul>
+<li>Source and destination ports.</li>
+<li>Length of the segment.</li>
+<li>Checksum.</li>
+</ul>
+</li>
+</ul>
+<h3><a class="header" href="#multiplexing-and-demultiplexing" id="multiplexing-and-demultiplexing">Multiplexing and Demultiplexing</a></h3>
+<p>Enabled by the use of <strong>ports</strong> at the Transport Layer - used to multiplex
+multiple connections for a host. A combination of IP address and Port Number
+consititutes a <strong>socket</strong>.</p>
+<ul>
+<li><strong>Multiplexing</strong> - the encapsulation of data into segments with header
+information identifying the sender and receiver of a segment.</li>
+<li><strong>Demultiplexing</strong> - the unpacking of a segment and interpretation of a header
+in order to deliver the data to its respective application.</li>
+</ul>
+<h2><a class="header" href="#goals-for-congestion-control" id="goals-for-congestion-control">Goals for congestion control</a></h2>
+<ul>
+<li><strong>Efficiency</strong> - throughput and utilization of the network should be as high
+as possible.</li>
+<li><strong>Fairness</strong> - each device should get a fair share of the network bandwitdth.</li>
+<li><strong>Low delay</strong> - ensuring applications sensitive to delays receive necessary
+data as quickly as possible.</li>
+<li><strong>Fast convergence</strong> - flow should be able to converge to fair allocation
+quickly.</li>
+</ul>
+<h2><a class="header" href="#end-to-end-vs-network-assisted-congestion-control" id="end-to-end-vs-network-assisted-congestion-control">End-to-end vs network-assisted congestion control</a></h2>
+<p><strong>End-to-end</strong> congestion control involves the hosts communicating and using the
+same protocols in order to control the congestion on the network. This is
+currently implemented with TCP.</p>
+<p><strong>Network-assisted</strong> congestion control involves network devices such as core
+routers implementing congestion control, which does not follow the end-to-end
+design of the Internet that is currently adopted. This design would require
+core routers to have much more computing power.</p>
+<h3><a class="header" href="#how-do-hosts-detect-congestion" id="how-do-hosts-detect-congestion">How do hosts detect congestion?</a></h3>
+<p>Hosts detecting congestion through packet delay and packet loss. The indicators
+can both be detected by TCP via a check of round-trip time and a loss of
+segments for each transmission window.</p>
+<h2><a class="header" href="#definitions" id="definitions">Definitions</a></h2>
+<ul>
+<li><strong>flow control</strong> - controlling the transmission rate to proctect the
+receiver's buffer.</li>
+<li><strong>congestion control</strong> - controlling the transmission rate to protect the
+network from congestion.</li>
+</ul>
 
                     </main>
 
