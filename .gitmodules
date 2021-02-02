@@ -2,3 +2,6 @@
 	path = cs6250-pr1
 	url = ../cs6250-pr1
 	branch = main
+[submodule "cs6250-pr2"]
+	path = cs6250-pr2
+	url = ../cs6250-pr2
