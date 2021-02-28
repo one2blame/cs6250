@@ -164,6 +164,227 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#lesson-2" id="lesson-2">Lesson 2</a></h1>
+<p>The following are questions and answers from the Exam 1 Study Guide for Lesson
+2:</p>
+<h2><a class="header" href="#what-does-the-transport-layer-provide" id="what-does-the-transport-layer-provide">What does the Transport Layer provide?</a></h2>
+<ul>
+<li>The Transport Layer provides an end-to-end connection between two applications
+that are running on different hosts, regardless if the hosts are in the same
+network.</li>
+</ul>
+<h2><a class="header" href="#what-is-a-packet-for-the-transport-layer-called" id="what-is-a-packet-for-the-transport-layer-called">What is a packet for the Transport Layer called?</a></h2>
+<ul>
+<li>Packets at the Transport Layer are called segments.</li>
+</ul>
+<h2><a class="header" href="#what-are-the-two-main-protocols-within-the-transport-layer" id="what-are-the-two-main-protocols-within-the-transport-layer">What are the two main protocols within the Transport Layer?</a></h2>
+<ul>
+<li>The two main protocols within the Transport Layer are:
+<ul>
+<li>Transmission Control Protocol (TCP)</li>
+<li>User Datagram Protocol (UDP)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#what-is-multiplexing-and-why-is-it-necessary" id="what-is-multiplexing-and-why-is-it-necessary">What is multiplexing, and why is it necessary?</a></h2>
+<ul>
+<li>The Transport Layer utilizes ports to implement <strong>multiplexing</strong>, allowing
+hosts to utilize the network for multiple applications. Multiplexing allows
+multiple streams of information to exist on the same network, and the division
+of the streams to different applications at the endpoint is achieved using
+ports.</li>
+</ul>
+<h2><a class="header" href="#describe-the-two-types-of-multiplexingdemultiplexing" id="describe-the-two-types-of-multiplexingdemultiplexing">Describe the two types of multiplexing/demultiplexing</a></h2>
+<ul>
+<li>The two types of multiplexing / demultiplexing are <strong>connectionless</strong> and
+<strong>connection-oriented</strong>:
+<ul>
+<li><strong>connectionless</strong> multiplexing / demultiplexing uses UDP and only requires
+the destination IP address and destination port.</li>
+<li><strong>connection-oriented</strong> multiplexing / demultiplexing uses TCP and requires
+the source IP address, source port, destination IP address and destination
+port.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#what-are-the-differences-between-udp-and-tcp" id="what-are-the-differences-between-udp-and-tcp">What are the differences between UDP and TCP?</a></h2>
+<ul>
+<li>TCP provides end-to-end communication and reliability.</li>
+<li>UDP offers no congestion control or similar mechanisms and no connection
+management overhead. The Application Layer must implement these features, if
+necessary.</li>
+</ul>
+<h2><a class="header" href="#when-would-an-application-layer-protocol-choose-udp-over-tcp" id="when-would-an-application-layer-protocol-choose-udp-over-tcp">When would an application layer protocol choose UDP over TCP?</a></h2>
+<ul>
+<li>UDP is useful for real-time applications that are sensitive to delays. The
+following are some applications / protocols that utilize UDP:
+<ul>
+<li>Remote file servers</li>
+<li>Streaming multimedia</li>
+<li>Internet telephony / VOIP</li>
+<li>Network management</li>
+<li>Routing protocols (e.g. RIP)</li>
+<li>Name translation (i.e. DNS)</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#explain-the-tcp-three-way-handshake" id="explain-the-tcp-three-way-handshake">Explain the TCP Three-way Handshake</a></h2>
+<ul>
+<li>
+<p>The TCP three-way handshake is the TCP protocol's method of initiating a
+connection with a host. TCP segments contain flags that are used to send TCP
+specific messages related to the protocol. For the three-way handshake, the
+flags <code>SYN</code> and <code>ACK</code> are used. The host initiating the connection begins by
+sending the remote host a <code>SYN</code> TCP message. The remote host responds with a
+<code>SYN, ACK</code> TCP message. Finally, the initiating host responds with an <code>ACK</code>
+TCP message, establishing the session - from there the Application Layer takes
+over to utilize the session for TCP-centric applications.</p>
+</li>
+<li>
+<p>The initial <code>SYN</code> TCP message and the <code>SYN, ACK</code> message from the server both
+contain a random sequence number. Each number will be incremented by <code>1</code> each
+time the two hosts communicate using TCP.</p>
+</li>
+</ul>
+<h2><a class="header" href="#explain-the-tcp-connection-tear-down" id="explain-the-tcp-connection-tear-down">Explain the TCP connection tear down</a></h2>
+<ul>
+<li>When the client is ready to close the connection, it sends a <code>FIN</code> TCP segment
+to the server. The server responds with an <code>ACK</code> TCP segment. When the server
+has completed its destruction of the TCP connection, it sends a <code>FIN</code> TCP
+segment to the client, and the client responds with <code>ACK</code>.</li>
+</ul>
+<h2><a class="header" href="#what-is-automatic-repeat-request-or-arq" id="what-is-automatic-repeat-request-or-arq">What is Automatic Repeat Request or ARQ?</a></h2>
+<ul>
+<li>TCP segments contain a segment number, allowing both hosts to know which
+segments were sent or received. Using TCP, hosts can acknowledge that they
+receive specific segments, allowing sending hosts to know if the receiver
+received all of the segments or if the receiver missed specific segments. If a
+specific segment is not acknowledged by the receiver, the sender can assume the
+segment didn't reach the receiver - after a timeout it will resend the segment.
+This is <strong>ARQ</strong>.</li>
+</ul>
+<h2><a class="header" href="#what-is-stop-and-wait-arq" id="what-is-stop-and-wait-arq">What is Stop and Wait ARQ?</a></h2>
+<ul>
+<li>This is what I described in the previous paragraph - sending and receiving
+with a timeout for acknowledged segments.</li>
+</ul>
+<h2><a class="header" href="#what-is-go-back-n" id="what-is-go-back-n">What is Go-back-N?</a></h2>
+<ul>
+<li>A modification of <strong>Stop and Wait ARQ</strong> that is more performant. Essentially,
+the receiver only acknowledges the most recently received, in order segment.
+So if the sender sends 10 segments, and the receiver acknowledges segment 7,
+then the receiver knows that maybe 8, 9, or 10 were either received out of order
+or lost entirely. Thus, the sender will resend the entire window of 1-10
+segments. The receiver will disregard 1-7 because it already has them, but will
+hopefully acknowledge segment 10, meaning it got the entire window of segments.</li>
+</ul>
+<h2><a class="header" href="#what-is-selective-acking" id="what-is-selective-acking">What is selective ACKing?</a></h2>
+<ul>
+<li>This is another mutation of the above protocols, however, the receiver can
+now receive segments out of order. The sender can now know that some segments
+were dropped or corrupted on their trip to the receiver. Once the entire window
+is received by the receiver, it will place the segments back into the correct
+order and proceed to the Application Layer.</li>
+</ul>
+<h2><a class="header" href="#what-is-fast-retransmit" id="what-is-fast-retransmit">What is fast retransmit?</a></h2>
+<ul>
+<li>This occurs when the receiver is encountering duplicate acknowledgements for
+segments that have already been acknowledged by the receiver. The sender will
+resend the segment experiencing duplicate acknowledgements.</li>
+</ul>
+<h2><a class="header" href="#what-is-transmission-control-and-why-do-we-need-to-control-it" id="what-is-transmission-control-and-why-do-we-need-to-control-it">What is transmission control and why do we need to control it?</a></h2>
+<ul>
+<li>Transmission control is used to control how much data is sent over a link by
+applications in used by each host on the network. Transmission control
+implements fairness on the network and congestion control for Layer 3 devices
+that provide connectivity.</li>
+</ul>
+<h2><a class="header" href="#what-is-flow-control-and-why-do-we-need-to-control-it" id="what-is-flow-control-and-why-do-we-need-to-control-it">What is flow control and why do we need to control it?</a></h2>
+<ul>
+<li>Flow control controls the transmission rate to protect a receiving host's
+network buffer from overflowing with information. It's possible that a receiving
+host is involved with multiple processes and does not read data from its network
+buffer instantly. This could cause an accumulation of data that overflows its
+buffer.</li>
+</ul>
+<h2><a class="header" href="#what-is-congestion-control" id="what-is-congestion-control">What is congestion control?</a></h2>
+<ul>
+<li>While Flow control is concerned about one specific host, Congestion Control
+is concerned with protecting the entire network from congestion. Given multiple
+devices using the same link, Congestion Control aims to avoid the link reaching
+max capacity, thus causing dropped packets and retransmissions.</li>
+</ul>
+<h2><a class="header" href="#what-are-the-goals-of-the-congestion-control" id="what-are-the-goals-of-the-congestion-control">What are the goals of the congestion control?</a></h2>
+<ul>
+<li>The goals of congestion control are as follows:
+<ul>
+<li>Efficiency - high throughput and network utilization.</li>
+<li>Fairness - every host should get a fair share of the network bandwidth.</li>
+<li>Low delay</li>
+<li>Fast convergence - network flow should be able to quickly converge to fair
+allocation.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#what-is-network-assisted-congestion-control" id="what-is-network-assisted-congestion-control">What is network-assisted congestion control?</a></h2>
+<ul>
+<li>Network-assisted congestion control involves Layer 3 devices providing
+feedback to hosts on the congestion of the network. This is usually implemented
+by sending diagnostic ICMP messages.</li>
+</ul>
+<h2><a class="header" href="#what-is-end-to-end-congestion-control" id="what-is-end-to-end-congestion-control">What is end-to-end congestion control?</a></h2>
+<ul>
+<li>The network does not provide any feedback to hosts about the congestion of the
+network to end points. Hosts must infer network behavior and adapt their
+transmission rate.</li>
+</ul>
+<h2><a class="header" href="#how-does-a-host-infer-congestion" id="how-does-a-host-infer-congestion">How does a host infer congestion?</a></h2>
+<ul>
+<li>Two methods, both implemented via TCP:
+<ul>
+<li>Round trip delay - time based inference of network congestion. Difficult to
+implement because round trip time varies wildly.</li>
+<li>Packet loss - the TCP messages that have to be re-sent, the more we can
+infer that network congestion exists. This was the first method of network
+congestion implemented in TCP.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#how-does-a-tcp-sender-limit-the-sending-rate" id="how-does-a-tcp-sender-limit-the-sending-rate">How does a TCP sender limit the sending rate?</a></h2>
+<ul>
+<li>TCP uses a congestion window, similar to the receive window for flow control
+by receiving hosts. TCP probes and adapts the congestion window, increasing
+to try and achieve the highest through, and decreasing when enough segments are
+dropped.</li>
+</ul>
+<h2><a class="header" href="#explain-additive-increasemultiplicative-decrease-aimd-in-the-context-of-tcp" id="explain-additive-increasemultiplicative-decrease-aimd-in-the-context-of-tcp">Explain Additive Increase/Multiplicative Decrease (AIMD) in the context of TCP</a></h2>
+<ul>
+<li>TCP uses addition to increase the number of packets sent in the congestion
+window when the network is not experiencing congestion. Once congestion is
+detected, the window is decreased by some multiplicative value, generating a
+sawtooth pattern of traffic over time.</li>
+</ul>
+<h2><a class="header" href="#what-is-a-slow-start-in-tcp" id="what-is-a-slow-start-in-tcp">What is a slow start in TCP?</a></h2>
+<ul>
+<li>Instead of using addition to establish the initial size of the congestion
+window, TCP will exponentially increase the congestion window until congestion
+is experienced.</li>
+</ul>
+<h2><a class="header" href="#is-tcp-fair-in-the-case-two-where-connections-have-the-same-rtt-explain" id="is-tcp-fair-in-the-case-two-where-connections-have-the-same-rtt-explain">Is TCP fair in the case two where connections have the same RTT? Explain</a></h2>
+<p>Yes as both will increase and decrease window sizes as needed to balance.</p>
+<h2><a class="header" href="#is-tcp-fair-in-the-case-where-two-connections-have-different-rtts-explain" id="is-tcp-fair-in-the-case-where-two-connections-have-different-rtts-explain">Is TCP fair in the case where two connections have different RTTs? Explain</a></h2>
+<p>No, a shorter RTT would increase the window faster.</p>
+<h2><a class="header" href="#explain-how-tcp-cubic-works" id="explain-how-tcp-cubic-works">Explain how TCP CUBIC works</a></h2>
+<ul>
+<li>TCP CUBIC uses a cubic function for the calculation of its congestion window.
+When TCP CUBIC detects congestions, it exercises a multiplicative decrease on
+its congestion window. Afterwards, it greatly increases its congestion window
+and plateaus until no congestion is detected. It then increases the congestion
+window again.</li>
+</ul>
+<h2><a class="header" href="#explain-tcp-throughput-calculation" id="explain-tcp-throughput-calculation">Explain TCP throughput calculation</a></h2>
+<ul>
+<li>Bandwidth (BW) is bound by ((Data and Time per Cycle Calculation) / (Round Trip Time (RTT))) * 1 / sqrt(Probability of Packet Loss)</li>
+</ul>
 
                     </main>
 
