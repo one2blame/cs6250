@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lesson 6</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../welcome.html">Welcome</a></li><li class="chapter-item "><a href="../lesson1/lesson1.html"><strong aria-hidden="true">1.</strong> Lesson 1</a></li><li class="chapter-item "><a href="../lesson2/lesson2.html"><strong aria-hidden="true">2.</strong> Lesson 2</a></li><li class="chapter-item "><a href="../lesson3/lesson3.html"><strong aria-hidden="true">3.</strong> Lesson 3</a></li><li class="chapter-item "><a href="../lesson4/lesson4.html"><strong aria-hidden="true">4.</strong> Lesson 4</a></li><li class="chapter-item "><a href="../lesson5/lesson5.html"><strong aria-hidden="true">5.</strong> Lesson 5</a></li><li class="chapter-item expanded "><a href="../lesson6/lesson6.html" class="active"><strong aria-hidden="true">6.</strong> Lesson 6</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#lesson-6" id="lesson-6">Lesson 6</a></h1>
+<p>The following are questions and answers from the Exam 1 Study Guide for Lesson
+6:</p>
+<h2><a class="header" href="#why-is-packet-classification-needed" id="why-is-packet-classification-needed">Why is packet classification needed?</a></h2>
+<ul>
+<li><strong>Packet classification</strong> is needed to accomplish quality of service
+guarantees and security guarantees that longest prefix matching based on
+destination IP alone cannot do. This allows handling packets based on other
+criteria such as TCP flags and source addresses.</li>
+</ul>
+<h2><a class="header" href="#what-are-three-established-variants-of-packet-classification" id="what-are-three-established-variants-of-packet-classification">What are three established variants of packet classification?</a></h2>
+<ol>
+<li><strong>Firewalls</strong> - filter out unwanted traffic and enforce other security
+policies</li>
+<li><strong>Resource reservation protocols</strong> - used to reserve bandwidth between source
+and destination</li>
+<li><strong>Routing based on traffic type</strong> - used to avoid delays for time-sensitive
+applications</li>
+</ol>
+<h2><a class="header" href="#what-are-the-simple-solutions-to-the-packet-classification-problem" id="what-are-the-simple-solutions-to-the-packet-classification-problem">What are the simple solutions to the packet classification problem?</a></h2>
+<ul>
+<li><strong>Linear search</strong> - reasonable for a few rules (such as in a firewall) but
+otherwise inefficient.</li>
+<li><strong>Caching</strong> - cache the results so that future searches can run faster.</li>
+<li><strong>Passing labels</strong> - done in the header and typically at the edges which saves
+time.</li>
+</ul>
+<h2><a class="header" href="#how-does-fast-searching-using-set-pruning-tries-work" id="how-does-fast-searching-using-set-pruning-tries-work">How does fast searching using set-pruning tries work?</a></h2>
+<ul>
+<li>Build a trie on destination prefixes and then at every leaf-node we “hang” the
+source tries that are compatible (or whatever other dimension we are considering
+for packet classification). To match a prefix, we first traverse the destination
+trie and then the source trie while keeping track of the lowest-cost matching
+rule.</li>
+</ul>
+<h2><a class="header" href="#whats-the-main-problem-with-the-set-pruning-tries" id="whats-the-main-problem-with-the-set-pruning-tries">What’s the main problem with the set pruning tries?</a></h2>
+<ul>
+<li>Memory explosion - a source prefix can occur in multiple destination tries</li>
+</ul>
+<h2><a class="header" href="#what-is-the-difference-between-the-pruning-approach-and-backtracking-approach-for-packet-classification-with-a-trie" id="what-is-the-difference-between-the-pruning-approach-and-backtracking-approach-for-packet-classification-with-a-trie">What is the difference between the pruning approach and backtracking approach for packet classification with a trie?</a></h2>
+<ul>
+<li>Set pruning has a high cost in memory with a lower cost in time. Backtracking
+saves memory but costs more in time. Each rule is only stored once.</li>
+</ul>
+<h2><a class="header" href="#whats-the-benefit-of-grid-of-tries-approach" id="whats-the-benefit-of-grid-of-tries-approach">What’s the benefit of grid of tries approach?</a></h2>
+<ul>
+<li>It is a middle-ground approach that balances the memory and time costs by
+using precomputation with switch pointers. These are basically shortcuts.</li>
+</ul>
+<h2><a class="header" href="#describe-the-take-the-ticket-algorithm" id="describe-the-take-the-ticket-algorithm">Describe the “Take the Ticket” algorithm</a></h2>
+<ul>
+<li>Each output line maintains a distributed queue for all input lines that want
+to send packets to it. When an input line wants to send a packet to a specific
+output line, it requests a ticket. The input line waits for the ticket to be
+served. At that point, the input line connects to the output line, the
+crosspoint is turned on, and the input line sends the packet.</li>
+</ul>
+<h2><a class="header" href="#what-is-head-of-line-problem" id="what-is-head-of-line-problem">What is head-of-line problem?</a></h2>
+<ul>
+<li>The other lines are stuck in the line waiting for their turn - the entire
+queue is blocked by the progress of the head of the queue.</li>
+</ul>
+<h2><a class="header" href="#how-to-avoid-head-of-line-problem-using-knockout-scheme" id="how-to-avoid-head-of-line-problem-using-knockout-scheme">How to avoid head-of-line problem using knockout scheme?</a></h2>
+<ul>
+<li>Break up the packets into a fixed size (cell). Have the fabric running N times
+faster than the input links where k is the expected number of cells received by
+an output link. For cases where the expectation is violated, randomly pick the
+output that is chosen. Complex to implement.</li>
+</ul>
+<h2><a class="header" href="#how-to-avoid-head-of-line-problem-using-parallel-iterative-matching" id="how-to-avoid-head-of-line-problem-using-parallel-iterative-matching">How to avoid head-of-line problem using parallel iterative matching?</a></h2>
+<ul>
+<li>All inputs send requests in parallel to all outputs they want to connect with.
+This is the request phase. In the grant phase, the outputs randomly pick an
+input out of its requestors. In the accept phase, inputs randomly pick an output
+to send to. This way, all of the inputs are sending packets from the start.</li>
+</ul>
+<h2><a class="header" href="#describe-fifo-with-tail-drop" id="describe-fifo-with-tail-drop">Describe FIFO with tail drop</a></h2>
+<ul>
+<li>Packets are sent to the output ports. The output ports are FIFO and any
+packets that overflow the buffer (tail of the queue) are dropped. This results
+in fast scheduling decisions but loss of packets.</li>
+</ul>
+<h2><a class="header" href="#what-are-the-reasons-to-make-scheduling-decisions-more-complex-than-fifo" id="what-are-the-reasons-to-make-scheduling-decisions-more-complex-than-fifo">What are the reasons to make scheduling decisions more complex than FIFO?</a></h2>
+<ul>
+<li>To provide quality of service (QoS) guarantees on measures such as delay and bandwidth. To provide additional (router) support for congestion. To promote
+fair sharing of links among competing flows.</li>
+</ul>
+<h2><a class="header" href="#describe-bit-by-bit-round-robin-scheduling" id="describe-bit-by-bit-round-robin-scheduling">Describe Bit-by-bit round Robin scheduling</a></h2>
+<ul>
+<li>Gives bandwidth and delay guarantees. We calculate the packet finishing time
+for each packet and send the packet with the smallest finishing round number
+based on the previous round of the algorithm.</li>
+</ul>
+<h2><a class="header" href="#bit-by-bit-round-robin-provides-fairness-whats-the-problem-with-this-method" id="bit-by-bit-round-robin-provides-fairness-whats-the-problem-with-this-method">Bit-by-bit Round Robin provides fairness, what’s the problem with this method?</a></h2>
+<ul>
+<li>Requires introducing extra time complexities such as keeping track of the
+finishing time (requires priority queue). The extra complexities make it hard to
+implement at gigabit speeds.</li>
+</ul>
+<h2><a class="header" href="#describe-deficit-round-robin-drr" id="describe-deficit-round-robin-drr">Describe Deficit Round Robin (DRR)</a></h2>
+<ul>
+<li>Solves some of the time complexities of bit-by-bit round robin by using a
+deficit counter instead of performing all the calculations of finishing time.
+This ensures fairness.</li>
+</ul>
+<h2><a class="header" href="#what-is-a-token-bucket-shaping" id="what-is-a-token-bucket-shaping">What is a token bucket shaping?</a></h2>
+<ul>
+<li>Used for the scenarios where we want bandwidth guarantees for flows in the
+same queue without separating them. Limits the burstiness of a flow by limiting
+the average rate and limiting the maximum burst size. The technique assumes a
+bucket per flow that fills with tokens at a rate R per second with a max of B
+tokens. Additional tokens are dropped. When packets arrive, they can go through
+if there are enough tokens, otherwise it must wait for more tokens to fill the
+bucket.</li>
+</ul>
+<h2><a class="header" href="#in-traffic-scheduling-what-is-the-difference-between-policing-and-shaping" id="in-traffic-scheduling-what-is-the-difference-between-policing-and-shaping">In traffic scheduling, what is the difference between policing and shaping?</a></h2>
+<ul>
+<li>
+<p><strong>Policing</strong> is a modified version of token bucket shaping - when a packet
+arrives it needs to have tokens at the bucket already there. If the bucket is
+empty, the packet is dropped.</p>
+</li>
+<li>
+<p>Policing - sawtooth wave pattern.</p>
+</li>
+<li>
+<p>Shaper - keeps excess in a queue or buffer so traffic is delayed instead of
+dropped. Smooth/shaped curve instead of sawtooth.</p>
+</li>
+</ul>
+<h2><a class="header" href="#how-is-a-leaky-bucket-used-for-traffic-policing-and-shaping" id="how-is-a-leaky-bucket-used-for-traffic-policing-and-shaping">How is a leaky bucket used for traffic policing and shaping?</a></h2>
+<ul>
+<li>
+<p>Similar to a bucket with a hole - constant flow of network traffic out of the
+bucket where the bucket can be seen as the buffer, water represents packets, and
+the leak rate is the rate at which packets are allowed to enter the network. If
+the packet will not cause overflow to the bucket, the packet is added
+(conforming) to the bucket. Otherwise it is discarded (non-conforming).</p>
+</li>
+<li>
+<p>Irrespective of the input rate of packets, the output rate is constant which
+leads to uniform distribution of packets sent to the network.</p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../lesson5/lesson5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../lesson5/lesson5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
