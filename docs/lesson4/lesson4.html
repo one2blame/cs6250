@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lesson 4</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../welcome.html">Welcome</a></li><li class="chapter-item "><a href="../lesson1/lesson1.html"><strong aria-hidden="true">1.</strong> Lesson 1</a></li><li class="chapter-item "><a href="../lesson2/lesson2.html"><strong aria-hidden="true">2.</strong> Lesson 2</a></li><li class="chapter-item "><a href="../lesson3/lesson3.html"><strong aria-hidden="true">3.</strong> Lesson 3</a></li><li class="chapter-item expanded "><a href="../lesson4/lesson4.html" class="active"><strong aria-hidden="true">4.</strong> Lesson 4</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#lesson-4" id="lesson-4">Lesson 4</a></h1>
+<p>The following are questions and answers from the Exam 1 Study Guide for Lesson
+4:</p>
+<h2><a class="header" href="#describe-the-relationships-between-isps-ixps-and-cdns" id="describe-the-relationships-between-isps-ixps-and-cdns">Describe the relationships between ISPs, IXPs, and CDNs</a></h2>
+<ul>
+<li>
+<p>ISPs (Internet Service Providers) are the “backbone” network over which
+smaller networks can connect. IXPs (Internet Exchange Points) are physical
+interconnection infrastructures that are used by multiple networks (such as ISPs
+and Content Distribution Networks (CDNs)) to interconnect.</p>
+</li>
+<li>
+<p>CDNs are networks created by content providers (such as Shopify/Netflix) to
+reduce connectivity costs and provide greater control for the content provider
+on how the content is delivered to the end-users. They may have multiple data
+centers with hundreds of servers distributed across the world.</p>
+</li>
+</ul>
+<h2><a class="header" href="#what-is-an-as" id="what-is-an-as">What is an AS?</a></h2>
+<ul>
+<li>Autonomous System (AS) - a group of routers that operate under the same
+administrative authority. An ISP (or CDN) can operate as a single AS or
+multiple. Each AS has its own set of policies/strategies based on their needs
+and doesn’t need to share this info with other ASes.</li>
+</ul>
+<h2><a class="header" href="#what-kind-of-relationship-does-as-have-with-other-parties" id="what-kind-of-relationship-does-as-have-with-other-parties">What kind of relationship does AS have with other parties?</a></h2>
+<ul>
+<li>Competition and cooperation. T1 ISPs compete with each other, T2 with each
+other, etc - there is a hierarchy but this hierarchy is becoming more flat over
+time thanks to evolutions such as IXPs and CDNs. Competing ISPs also need to
+cooperate so that the Internet can work on a global scale.</li>
+</ul>
+<h2><a class="header" href="#what-is-bgp" id="what-is-bgp">What is BGP?</a></h2>
+<ul>
+<li>For traffic to go between ASes, BGP (Border Gateway Protocol) is used which is
+primarily based on incentives (money) - ASes do whatever makes the most sense
+for them from a financial standpoint.</li>
+</ul>
+<h2><a class="header" href="#how-does-an-as-determine-what-rules-to-importexport" id="how-does-an-as-determine-what-rules-to-importexport">How does an AS determine what rules to import/export?</a></h2>
+<ul>
+<li>It's entirely a business decision for both importing and exporting routes.
+ASes are incentivized to advertise customer routes, peer routes none,
+and provider routes none. For importing routes from other ASes, ASes are
+incentivized to import customer routes most, peer routes less, and provider
+routes none.</li>
+</ul>
+<h2><a class="header" href="#what-are-were-original-the-design-goals-of-bgp-what-was-considered-later" id="what-are-were-original-the-design-goals-of-bgp-what-was-considered-later">What are were original the design goals of BGP? What was considered later?</a></h2>
+<p>The original design goals were:</p>
+<ul>
+<li>Scalability - quick convergence and loop-free pathing</li>
+<li>Express routing policies - allow ASes to implement policies, filter and rank
+routes, and keep these decisions confidential</li>
+<li>Allowing cooperation among ASes - allows ASes to make local decisions while
+keeping these decisions confidential from other ASes</li>
+</ul>
+<p><strong>Security</strong> was not originally considered when implementing BGP, requiring
+security measures to be added later as the Internet grew in size and complexity.</p>
+<h2><a class="header" href="#what-are-the-basics-of-bgp" id="what-are-the-basics-of-bgp">What are the basics of BGP?</a></h2>
+<ul>
+<li>
+<p>A pair of routers, <strong>BGP peers</strong>, exchange routing info over a semi-permanent
+TCP port connection <strong>(BGP session)</strong>. This starts with an OPEN message and is
+followed by the routers sending each other announcements from their own routing
+tables.</p>
+</li>
+<li>
+<p>There are two types of <strong>BGP messages</strong>:</p>
+<ul>
+<li><strong>UPDATE</strong> - announcements of new routes/updates to existing routes;
+withdrawal of previous routes due to a failure or change in routing policy</li>
+<li><strong>KEEPALIVE</strong> - message exchanged to keep a current session going</li>
+</ul>
+</li>
+<li>
+<p><strong>BGP routes</strong> - main components: reachable IP prefix field, AS-PATH (route
+passed through from destination), and NEXT-HOP (IP of next-hop router along the
+path towards the destination). In iBGP the NEXT-HOP is the address of the
+nearest border router.</p>
+</li>
+</ul>
+<h2><a class="header" href="#what-is-the-difference-between-ibgp-and-ebgp" id="what-is-the-difference-between-ibgp-and-ebgp">What is the difference between iBGP and eBGP?</a></h2>
+<ul>
+<li><strong>eBGP</strong> - external BGP; BGP session between pair of routers in two different
+ASes</li>
+<li><strong>iBGP</strong> - internal BGP; BGP session between routers in the same AS</li>
+</ul>
+<h2><a class="header" href="#what-is-the-difference-between-ibgp-and-igp-like-protocols-rip-or-ospf" id="what-is-the-difference-between-ibgp-and-igp-like-protocols-rip-or-ospf">What is the difference between iBGP and IGP-like protocols (RIP or OSPF)?</a></h2>
+<ul>
+<li>iBGP is used to propagate information about what ASes can be reached by the
+gateway routers in the current AS. IGP-like protocols are used to establish
+paths between the internal routers of an AS based on specific costs within the
+AS.</li>
+</ul>
+<h2><a class="header" href="#how-does-a-router-use-the-bgp-decision-process-to-choose-which-routes-to-import" id="how-does-a-router-use-the-bgp-decision-process-to-choose-which-routes-to-import">How does a router use the BGP decision process to choose which routes to import?</a></h2>
+<ul>
+<li>The actual policies are based on the business goals of the AS, but they all
+follow the same process to select the best routes based on the policy in place.
+The router compares a list of attributes, between a pair of routes, in top down
+order - if two attributes are equal then it moves down to the next attribute and
+so on.</li>
+<li><strong>LocalPref</strong> is at the top and set by the local AS’ administrator based on
+business relationships/preference of specific AS.
+<strong>Higher number = higher preference.</strong> Controls which routers are used as exit
+points (outgoing traffic).</li>
+<li><strong>MED</strong> (Multi-Exit Discriminator) is another important attribute and is set
+by the neighboring ASes. <strong>Lower MED value = higher preference.</strong> A neighboring
+AS with multiple links can tag routes with MED values to indicate which routers
+are used as entry points (which links are preferred for inbound traffic).</li>
+<li>LocalPref = outbound; MED = inbound</li>
+</ul>
+<h2><a class="header" href="#what-are-2-main-challenges-with-bgp-why" id="what-are-2-main-challenges-with-bgp-why">What are 2 main challenges with BGP? Why?</a></h2>
+<ul>
+<li>Scalability and misconfigurations or faults. An error can result in an
+excessively large number of updates which can lead to route instability,
+overloading, outages, etc.</li>
+<li>ASes can reduce this risk by limiting routing table size with filtering to
+encourage route aggregation and limiting the number of route changes with flap
+damping (suppresses route updates for a period of time when a threshold is
+reached which can be set individually for prefixes according to a specific
+strategy).</li>
+</ul>
+<h2><a class="header" href="#what-is-an-ixp" id="what-is-an-ixp">What is an IXP?</a></h2>
+<ul>
+<li><strong>Internet Exchange Points</strong> - physical infrastructures that provide the means
+for ASes to interconnect and directly exchange traffic with one another.</li>
+</ul>
+<h2><a class="header" href="#what-are-four-reasons-for-ixps-increased-popularity" id="what-are-four-reasons-for-ixps-increased-popularity">What are four reasons for IXPs increased popularity?</a></h2>
+<ol>
+<li>They can handle large traffic volumes comparable to T1 ISPs</li>
+<li>Play an important role in mitigating DDoS attacks as they can play the role
+of a “shield” such as with BGP blackholing</li>
+<li>Provide a plethora of research opportunities into the evolution of the
+Internet landscape</li>
+<li>Active marketplaces with many services beyond interconnection - they have
+been evolving from simple interconnection hubs to technology innovation hubs</li>
+</ol>
+<p>Keeps traffic local when both on the same IXP, lower costs, incentives from big
+players.</p>
+<h2><a class="header" href="#which-services-do-ixps-provide" id="which-services-do-ixps-provide">Which services do IXPs provide?</a></h2>
+<ol>
+<li>Public peering</li>
+<li>Private peering (separate from public)</li>
+<li>Route servers and service level agreements (many participants on a network
+can use it with a single agreement/BGP session)</li>
+<li>Remote peering through resellers (third parties can resell their connection
+to IXP to networks that use less traffic/in distant area)</li>
+<li>Mobile peering</li>
+<li>DDoS blackholing (customer can trigger this to alleviate DDoS effects)</li>
+<li>Free value-added services such as nameservers, local time, DNS root name
+servers, etc.</li>
+</ol>
+<h2><a class="header" href="#how-does-a-route-server-work" id="how-does-a-route-server-work">How does a route server work?</a></h2>
+<p>Route servers help to make peering more manageable. In summary, a Route Server
+(RS):</p>
+<ul>
+<li>Collects and shares routing information from its peers or participants that
+connects with (i.e. IXP members that connect to the RS).</li>
+<li>Executes it’s own BGP decision process and also re-advertise the resulting
+information (I.e. best route selection) to all RS’s peer routers.</li>
+</ul>
+<p>A typical routing daemon maintains a <strong>Routing Information Base (RIB)</strong> which
+contains all BGP paths that it receives from its peers - the Master RIB.
+The router server also maintains AS-specific RIBs to keep track of the
+individual BGP sessions they maintain with each participant AS.</p>
+<p>RSes maintain two types of route filters:</p>
+<ul>
+<li><strong>Import filters</strong> are applied to ensure that each member AS only advertises
+routes that it should advertise</li>
+<li><strong>Export filters</strong> which are typically triggered by the IXP members themselves
+to restrict the set of other IXP member ASes that receive their routes.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../lesson3/lesson3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../lesson3/lesson3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
