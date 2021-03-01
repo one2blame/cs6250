@@ -22,7 +22,6 @@ administrative authority. An ISP (or CDN) can operate as a single AS or
 multiple. Each AS has its own set of policies/strategies based on their needs
 and doesn’t need to share this info with other ASes.
 
-
 ## What kind of relationship does AS have with other parties?
 
 * Competition and cooperation. T1 ISPs compete with each other, T2 with each
