@@ -14,3 +14,6 @@
 [submodule "cs6250-pr5"]
 	path = cs6250-pr5
 	url = ../cs6250-pr5
+[submodule "cs6250-pr6"]
+	path = cs6250-pr6
+	url = ../cs6250-pr6
