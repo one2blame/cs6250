@@ -1,6 +1,6 @@
 # Lesson 7
 
-The following are questions and answers from the Exam 1 Study Guide for Lesson
+The following are questions and answers from the Exam 2 Study Guide for Lesson
 7:
 
 * What spurred the development of Software Defined Networking (SDN)?
