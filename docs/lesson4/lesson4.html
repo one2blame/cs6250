@@ -166,7 +166,9 @@
                         <h1><a class="header" href="#lesson-4" id="lesson-4">Lesson 4</a></h1>
 <p>The following are questions and answers from the Exam 1 Study Guide for Lesson
 4:</p>
-<h2><a class="header" href="#describe-the-relationships-between-isps-ixps-and-cdns" id="describe-the-relationships-between-isps-ixps-and-cdns">Describe the relationships between ISPs, IXPs, and CDNs</a></h2>
+<ul>
+<li>
+<p>Describe the relationships between ISPs, IXPs, and CDNs</p>
 <ul>
 <li>
 <p>ISPs (Internet Service Providers) are the “backbone” network over which
@@ -181,27 +183,35 @@ on how the content is delivered to the end-users. They may have multiple data
 centers with hundreds of servers distributed across the world.</p>
 </li>
 </ul>
-<h2><a class="header" href="#what-is-an-as" id="what-is-an-as">What is an AS?</a></h2>
+</li>
+<li>
+<p>What is an AS?</p>
 <ul>
 <li>Autonomous System (AS) - a group of routers that operate under the same
 administrative authority. An ISP (or CDN) can operate as a single AS or
 multiple. Each AS has its own set of policies/strategies based on their needs
 and doesn’t need to share this info with other ASes.</li>
 </ul>
-<h2><a class="header" href="#what-kind-of-relationship-does-as-have-with-other-parties" id="what-kind-of-relationship-does-as-have-with-other-parties">What kind of relationship does AS have with other parties?</a></h2>
+</li>
+<li>
+<p>What kind of relationship does AS have with other parties?</p>
 <ul>
 <li>Competition and cooperation. T1 ISPs compete with each other, T2 with each
 other, etc - there is a hierarchy but this hierarchy is becoming more flat over
 time thanks to evolutions such as IXPs and CDNs. Competing ISPs also need to
 cooperate so that the Internet can work on a global scale.</li>
 </ul>
-<h2><a class="header" href="#what-is-bgp" id="what-is-bgp">What is BGP?</a></h2>
+</li>
+<li>
+<p>What is BGP?</p>
 <ul>
 <li>For traffic to go between ASes, BGP (Border Gateway Protocol) is used which is
 primarily based on incentives (money) - ASes do whatever makes the most sense
 for them from a financial standpoint.</li>
 </ul>
-<h2><a class="header" href="#how-does-an-as-determine-what-rules-to-importexport" id="how-does-an-as-determine-what-rules-to-importexport">How does an AS determine what rules to import/export?</a></h2>
+</li>
+<li>
+<p>How does an AS determine what rules to import/export?</p>
 <ul>
 <li>It's entirely a business decision for both importing and exporting routes.
 ASes are incentivized to advertise customer routes, peer routes none,
@@ -209,18 +219,34 @@ and provider routes none. For importing routes from other ASes, ASes are
 incentivized to import customer routes most, peer routes less, and provider
 routes none.</li>
 </ul>
-<h2><a class="header" href="#what-are-were-original-the-design-goals-of-bgp-what-was-considered-later" id="what-are-were-original-the-design-goals-of-bgp-what-was-considered-later">What are were original the design goals of BGP? What was considered later?</a></h2>
+</li>
+<li>
+<p>What are were original the design goals of BGP? What was considered later?</p>
+<ul>
+<li>
 <p>The original design goals were:</p>
 <ul>
-<li>Scalability - quick convergence and loop-free pathing</li>
-<li>Express routing policies - allow ASes to implement policies, filter and rank
-routes, and keep these decisions confidential</li>
-<li>Allowing cooperation among ASes - allows ASes to make local decisions while
-keeping these decisions confidential from other ASes</li>
-</ul>
+<li>
+<p>Scalability - quick convergence and loop-free pathing</p>
+</li>
+<li>
+<p>Express routing policies - allow ASes to implement policies, filter and rank
+routes, and keep these decisions confidential</p>
+</li>
+<li>
+<p>Allowing cooperation among ASes - allows ASes to make local decisions while
+keeping these decisions confidential from other ASes</p>
+</li>
+<li>
 <p><strong>Security</strong> was not originally considered when implementing BGP, requiring
 security measures to be added later as the Internet grew in size and complexity.</p>
-<h2><a class="header" href="#what-are-the-basics-of-bgp" id="what-are-the-basics-of-bgp">What are the basics of BGP?</a></h2>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What are the basics of BGP?</p>
 <ul>
 <li>
 <p>A pair of routers, <strong>BGP peers</strong>, exchange routing info over a semi-permanent
@@ -243,20 +269,26 @@ path towards the destination). In iBGP the NEXT-HOP is the address of the
 nearest border router.</p>
 </li>
 </ul>
-<h2><a class="header" href="#what-is-the-difference-between-ibgp-and-ebgp" id="what-is-the-difference-between-ibgp-and-ebgp">What is the difference between iBGP and eBGP?</a></h2>
+</li>
+<li>
+<p>What is the difference between iBGP and eBGP?</p>
 <ul>
 <li><strong>eBGP</strong> - external BGP; BGP session between pair of routers in two different
 ASes</li>
 <li><strong>iBGP</strong> - internal BGP; BGP session between routers in the same AS</li>
 </ul>
-<h2><a class="header" href="#what-is-the-difference-between-ibgp-and-igp-like-protocols-rip-or-ospf" id="what-is-the-difference-between-ibgp-and-igp-like-protocols-rip-or-ospf">What is the difference between iBGP and IGP-like protocols (RIP or OSPF)?</a></h2>
+</li>
+<li>
+<p>What is the difference between iBGP and IGP-like protocols (RIP or OSPF)?</p>
 <ul>
 <li>iBGP is used to propagate information about what ASes can be reached by the
 gateway routers in the current AS. IGP-like protocols are used to establish
 paths between the internal routers of an AS based on specific costs within the
 AS.</li>
 </ul>
-<h2><a class="header" href="#how-does-a-router-use-the-bgp-decision-process-to-choose-which-routes-to-import" id="how-does-a-router-use-the-bgp-decision-process-to-choose-which-routes-to-import">How does a router use the BGP decision process to choose which routes to import?</a></h2>
+</li>
+<li>
+<p>How does a router use the BGP decision process to choose which routes to import?</p>
 <ul>
 <li>The actual policies are based on the business goals of the AS, but they all
 follow the same process to select the best routes based on the policy in place.
@@ -264,8 +296,7 @@ The router compares a list of attributes, between a pair of routes, in top down
 order - if two attributes are equal then it moves down to the next attribute and
 so on.</li>
 <li><strong>LocalPref</strong> is at the top and set by the local AS’ administrator based on
-business relationships/preference of specific AS.
-<strong>Higher number = higher preference.</strong> Controls which routers are used as exit
+business relationships/preference of specific AS. <strong>Higher number = higher preference.</strong> Controls which routers are used as exit
 points (outgoing traffic).</li>
 <li><strong>MED</strong> (Multi-Exit Discriminator) is another important attribute and is set
 by the neighboring ASes. <strong>Lower MED value = higher preference.</strong> A neighboring
@@ -273,7 +304,9 @@ AS with multiple links can tag routes with MED values to indicate which routers
 are used as entry points (which links are preferred for inbound traffic).</li>
 <li>LocalPref = outbound; MED = inbound</li>
 </ul>
-<h2><a class="header" href="#what-are-2-main-challenges-with-bgp-why" id="what-are-2-main-challenges-with-bgp-why">What are 2 main challenges with BGP? Why?</a></h2>
+</li>
+<li>
+<p>What are 2 main challenges with BGP? Why?</p>
 <ul>
 <li>Scalability and misconfigurations or faults. An error can result in an
 excessively large number of updates which can lead to route instability,
@@ -284,12 +317,16 @@ damping (suppresses route updates for a period of time when a threshold is
 reached which can be set individually for prefixes according to a specific
 strategy).</li>
 </ul>
-<h2><a class="header" href="#what-is-an-ixp" id="what-is-an-ixp">What is an IXP?</a></h2>
+</li>
+<li>
+<p>What is an IXP?</p>
 <ul>
 <li><strong>Internet Exchange Points</strong> - physical infrastructures that provide the means
 for ASes to interconnect and directly exchange traffic with one another.</li>
 </ul>
-<h2><a class="header" href="#what-are-four-reasons-for-ixps-increased-popularity" id="what-are-four-reasons-for-ixps-increased-popularity">What are four reasons for IXPs increased popularity?</a></h2>
+</li>
+<li>
+<p>What are four reasons for IXPs increased popularity?</p>
 <ol>
 <li>They can handle large traffic volumes comparable to T1 ISPs</li>
 <li>Play an important role in mitigating DDoS attacks as they can play the role
@@ -299,9 +336,13 @@ Internet landscape</li>
 <li>Active marketplaces with many services beyond interconnection - they have
 been evolving from simple interconnection hubs to technology innovation hubs</li>
 </ol>
-<p>Keeps traffic local when both on the same IXP, lower costs, incentives from big
-players.</p>
-<h2><a class="header" href="#which-services-do-ixps-provide" id="which-services-do-ixps-provide">Which services do IXPs provide?</a></h2>
+<ul>
+<li>Keeps traffic local when both on the same IXP, lower costs, incentives from big
+players.</li>
+</ul>
+</li>
+<li>
+<p>Which services do IXPs provide?</p>
 <ol>
 <li>Public peering</li>
 <li>Private peering (separate from public)</li>
@@ -314,7 +355,11 @@ to IXP to networks that use less traffic/in distant area)</li>
 <li>Free value-added services such as nameservers, local time, DNS root name
 servers, etc.</li>
 </ol>
-<h2><a class="header" href="#how-does-a-route-server-work" id="how-does-a-route-server-work">How does a route server work?</a></h2>
+</li>
+<li>
+<p>How does a route server work?</p>
+<ul>
+<li>
 <p>Route servers help to make peering more manageable. In summary, a Route Server
 (RS):</p>
 <ul>
@@ -323,16 +368,24 @@ connects with (i.e. IXP members that connect to the RS).</li>
 <li>Executes it’s own BGP decision process and also re-advertise the resulting
 information (I.e. best route selection) to all RS’s peer routers.</li>
 </ul>
+</li>
+<li>
 <p>A typical routing daemon maintains a <strong>Routing Information Base (RIB)</strong> which
 contains all BGP paths that it receives from its peers - the Master RIB.
 The router server also maintains AS-specific RIBs to keep track of the
 individual BGP sessions they maintain with each participant AS.</p>
+</li>
+<li>
 <p>RSes maintain two types of route filters:</p>
 <ul>
 <li><strong>Import filters</strong> are applied to ensure that each member AS only advertises
 routes that it should advertise</li>
 <li><strong>Export filters</strong> which are typically triggered by the IXP members themselves
 to restrict the set of other IXP member ASes that receive their routes.</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
                     </main>
