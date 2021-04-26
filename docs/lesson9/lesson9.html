@@ -165,33 +165,223 @@
                     <main>
                         <h1><a class="header" href="#lesson-9" id="lesson-9">Lesson 9</a></h1>
 <ul>
-<li>What are the properties of secure communication?</li>
-<li>How does Round Robin DNS (RRDNS) work?</li>
-<li>How does DNS-based content delivery work?</li>
-<li>How do Fast-Flux Service Networks work?</li>
-<li>What are the main data sources to identify hosts that likely belong to rogue
-networks, used by FIRE (FInding Rogue nEtworks system)?</li>
-<li>The design of ASwatch is based on monitoring global BGP routing activity to
-learn the control plane behavior of a network. Describe 2 phases of this system.</li>
-<li>What are 3 classes of features used to determine the likelihood of a security
-breach within an organization?</li>
-<li>(BGP hijacking) What is the classification by affected prefix?</li>
-<li>(BGP hijacking) What is the classification by AS-Path announcement?</li>
-<li>(BGP hijacking) What is the classification by data plane traffic manipulation?</li>
-<li>What are the causes or motivations behind BGP attacks?</li>
-<li>Explain the scenario of prefix hijacking.</li>
-<li>Explain the scenario of hijacking a path.</li>
-<li>What are the key ideas behind ARTEMIS?</li>
-<li>What are the two automated techniques used by ARTEMIS to protect against BGP
-hijacking?</li>
-<li>What are two findings from ARTEMIS?</li>
-<li>Explain the structure of a DDoS attack.</li>
-<li>What is spoofing, and how is related to DDoS attack?</li>
-<li>Describe a Reflection and Amplification attack.</li>
-<li>What are the defenses against DDoS attacks?</li>
-<li>Explain provider-based blackholing.</li>
-<li>Explain IXP blackholing.</li>
-<li>What is one of the major drawbacks of BGP blackholing?</li>
+<li>
+<p>What are the properties of secure communication?</p>
+<ul>
+<li>Confidentiality</li>
+<li>Integrity</li>
+<li>Authentication</li>
+<li>Availability</li>
+</ul>
+</li>
+<li>
+<p>How does Round Robin DNS (RRDNS) work?</p>
+<ul>
+<li>Responding to a DNS request with a list of DNS A records, cycling through
+records each time.</li>
+</ul>
+</li>
+<li>
+<p>How does DNS-based content delivery work?</p>
+<ul>
+<li>When a lookup is conducted for a resource / content, the delivery network
+will determine the best CDN server to service the request and use DNS to
+point the client to the right IP address.</li>
+</ul>
+</li>
+<li>
+<p>How do Fast-Flux Service Networks work?</p>
+<ul>
+<li>Based on a rapid change in DNS answers, with a TTL lower than that of RRDNS
+and CDN. This is done in order to prevent spammers for injecting bad IP
+addresses into the DNS resolution lifecycle</li>
+</ul>
+</li>
+<li>
+<p>What are the main data sources to identify hosts that likely belong to rogue
+networks, used by FIRE (FInding Rogue nEtworks system)?</p>
+<ul>
+<li>Botnet command and control providers</li>
+<li>Drive-by-download hosting providers</li>
+<li>Phish housing providers</li>
+</ul>
+</li>
+<li>
+<p>The design of ASwatch is based on monitoring global BGP routing activity to
+learn the control plane behavior of a network. Describe 2 phases of this system.</p>
+<ol>
+<li>Training phase - ASwatch learns the control-plane behavior of a normal AS
+and a malicious one and learns to differentiate between them.</li>
+<li>Operational phase - ASwatch takes an unknown AS and calculates the features
+for it, assigning it a reputation score.</li>
+</ol>
+</li>
+<li>
+<p>What are 3 classes of features used to determine the likelihood of a security
+breach within an organization?</p>
+<ul>
+<li>Rewiring activity - changes in the AS connecting activity, multiple changes
+in providers / customers looks suspicious</li>
+<li>IP Space Fragmentation and Churn - inspects advertised prefixes of an
+autonomous system. Malicious ASes are likely to use small BGP prefixes to
+partition their IP address space and only exposes a small section of them</li>
+<li>BGP Routing Dynamics - tracks announcements and withdrawals, which usually
+follow different patterns for malicious ASes</li>
+</ul>
+</li>
+<li>
+<p>(BGP hijacking) What is the classification by affected prefix?</p>
+<ul>
+<li>This classification is primarily concerned with the IP prefixes that are
+advertised by BGP. There are different ways the prefix can be targeted:
+<ul>
+<li>Exact prefix hijacking</li>
+<li>Sub-prefix hijacking</li>
+<li>Squatting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>(BGP hijacking) What is the classification by AS-Path announcement?</p>
+<ul>
+<li>An illegitimate autonomous system announces the AS path for a prefix for
+which it doesn't have ownership rights.
+<ul>
+<li>Type-0 hijack - AS announcing a prefix not owned by itself</li>
+<li>Type-N hijack - counterfeit AS announces an illegitimate path for a prefix
+that it does not own or create a fake path between different ASes</li>
+<li>Type-U hijack - the hijacking AS does not modify the AS-PATH but may
+change the prefix</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>(BGP hijacking) What is the classification by data plane traffic manipulation?</p>
+<ul>
+<li>In this classification of attacks, the attacker attempts to hijack the
+network traffic and manipulate the redirected network traffic on its way to
+the receiving AS. Traffic intercepted can be:
+<ul>
+<li>Dropped (blackholing)</li>
+<li>Man-in-the-middle</li>
+<li>Impersonation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What are the causes or motivations behind BGP attacks?</p>
+<ul>
+<li>Human error - misconfiguration / accidents</li>
+<li>Targeted attack - intentional interception of network traffic
+(man-in-the-middle) (stealthy)</li>
+<li>High impact attack - obvious attempt to cause widespread disruption</li>
+</ul>
+</li>
+<li>
+<p>Explain the scenario of prefix hijacking.</p>
+<ul>
+<li>Malicious autonomous system router advertises a prefix that it doesn't own,
+taking advantage of its shorter distance to have peer / customer routers
+change their path for the prefix to the malicious autonomous system.</li>
+</ul>
+</li>
+<li>
+<p>Explain the scenario of hijacking a path.</p>
+<ul>
+<li>Malicious autonomous system receives a path and alters it, placing itself
+as the best path to reach a specific autonomous system / prefix. This path
+will likely be shorter than the original, causing other ASes to use the new
+hijacked path.</li>
+</ul>
+</li>
+<li>
+<p>What are the key ideas behind ARTEMIS?</p>
+<ul>
+<li>A configuration file where all prefixes owned by the network are listed for
+reference.</li>
+<li>A mechanism for receiving BGP updates, allows the system to receive updates
+from local routers and monitoring services</li>
+</ul>
+</li>
+<li>
+<p>What are the two automated techniques used by ARTEMIS to protect against BGP
+hijacking?</p>
+<ul>
+<li>Prefix deaggregation - announcing more specific prefixes in order to
+mitigate prefix hijacking</li>
+<li>Mitigation with multiple origin AS (MOAS) - third party organizations and
+service providers do BGP announcements for a given network</li>
+</ul>
+</li>
+<li>
+<p>What are two findings from ARTEMIS?</p>
+<ol>
+<li>Outsource the task of BGP announcements to third parties</li>
+<li>Filtering of prefixes is less optimal when compared against BGP
+announcements</li>
+</ol>
+</li>
+<li>
+<p>Explain the structure of a DDoS attack.</p>
+<ul>
+<li>An attempt to compromise a server or network resources with a flood of
+traffic</li>
+<li>Attack compromises and deploys flooding servers that send high volumes of
+traffic to a victim</li>
+</ul>
+</li>
+<li>
+<p>What is spoofing, and how is related to DDoS attack?</p>
+<ul>
+<li>Impersonating a legitimate server with a spoofed IP address. One method
+causes a server to flood a target with unsolicited responses to spoofed
+requests. The other uses the spoofed IP address in the both the source and
+destination IP, causing the server to send responses / requests to itself.</li>
+</ul>
+</li>
+<li>
+<p>Describe a Reflection and Amplification attack.</p>
+<ul>
+<li>A reflective attack is sending a bunch of spoofed requests to a server
+which will then DDoS the target on behalf of the attacker.</li>
+</ul>
+</li>
+<li>
+<p>What are the defenses against DDoS attacks?</p>
+<ul>
+<li>Traffic Scrubbing Services</li>
+<li>Access Control List filters</li>
+<li>BGP Flowspec</li>
+</ul>
+</li>
+<li>
+<p>Explain provider-based blackholing.</p>
+<ul>
+<li>A customer autonomous system announces a blackholing message to the
+provider with the host name of the DDoS victim. This usually contains a
+special community field - the provider will then stop advertising the prefix
+of the affected host.</li>
+</ul>
+</li>
+<li>
+<p>Explain IXP blackholing.</p>
+<ul>
+<li>Same as the above, but on an autonomous system scale. The IXP will handling
+the blackholing and advertise the NULL address to the other ASes peered in the
+IXP.</li>
+</ul>
+</li>
+<li>
+<p>What is one of the major drawbacks of BGP blackholing?</p>
+<ul>
+<li>The destination under attack becomes unreachable.</li>
+<li>The mitigation technique is also ineffective if peer autonomous systems
+neglect / don't respect BGP Blackholing requests.</li>
+</ul>
+</li>
 </ul>
 
                     </main>

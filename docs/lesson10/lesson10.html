@@ -165,45 +165,228 @@
                     <main>
                         <h1><a class="header" href="#lesson-10" id="lesson-10">Lesson 10</a></h1>
 <ul>
-<li>What is DNS censorship?</li>
-<li>What are the properties of GFW (Great Firewall of China)?</li>
-<li>How does DNS injection work?</li>
-<li>What are the three steps involved in DNS injection?</li>
-<li>List five DNS censorship techniques and briefly describe their working
-principles.</li>
-<li>Which DNS censorship technique is susceptible to overblocking?</li>
-<li>What are the strengths and weaknesses of “packet dropping” DNS censorship
-technique?</li>
-<li>What are the strengths and weaknesses of “DNS poisoning” DNS censorship
-technique?</li>
-<li>What are the strengths and weaknesses of “content inspection” DNS censorship
-technique?</li>
-<li>What are the strengths and weaknesses of “blocking with resets” DNS censorship
-technique?</li>
-<li>What are the strengths and weaknesses of “immediate reset of connections” DNS
-censorship technique?</li>
-<li>Our understanding of censorship around the world is relatively limited. Why is
-it the case? What are the challenges?</li>
-<li>What are the limitations of main censorship detection systems?</li>
-<li>What kind of disruptions does Augur focus on identifying?</li>
-<li>How does Iris counter the issue of lack of diversity while studying DNS
-manipulation? What are the steps associated with the proposed process?</li>
-<li>What are the steps involved in the global measurement process using DNS
-resolvers?</li>
-<li>What metrics does Iris use to identify DNS manipulation once data annotation
+<li>
+<p>What is DNS censorship?</p>
+<ul>
+<li>Large scale network traffic filtering strategy opted by a network to enforce
+control and censorship over Internet infrastructure to suppress material
+which they deem as objectionable.</li>
+</ul>
+</li>
+<li>
+<p>What are the properties of GFW (Great Firewall of China)?</p>
+<ol>
+<li>Locality of GFW nodes - majority view is that GFW censorship nodes are
+present at the edge.</li>
+<li>Centralized management - blocklists obtained from two distinct GFW
+locations show a high possibility of a central GFW management entity that
+orchestrates blocklists.</li>
+<li>Load balancing - GFW load balances between processes based on source and
+destination IP address.</li>
+</ol>
+</li>
+<li>
+<p>How does DNS injection work?</p>
+<ul>
+<li>For DNS requests that are blocked by the GFW, the GFW will respond with a
+fake DNS record to prevent the client from reaching the requested content.</li>
+</ul>
+</li>
+<li>
+<p>What are the three steps involved in DNS injection?</p>
+<ul>
+<li>DNS probe is sent to a DNS resolver</li>
+<li>THe probe is checked against the blocklist</li>
+<li>A fake DNS A record response is sent back if the request matches the
+blocklist. The direct domain can be blocked, or specific domain keywords can
+be blocked.</li>
+</ul>
+</li>
+<li>
+<p>List five DNS censorship techniques and briefly describe their working
+principles.</p>
+<ol>
+<li>Packet dropping - all traffic to specific IP addresses are dropped</li>
+<li>DNS Poisoning - return no answer or return an incorrect answer</li>
+<li>Content inspection - all traffic traverses a proxy and is inspected for
+objectionable content, if matches -&gt; dropped</li>
+<li>Blocking with resets - sends a TCP (RST) to block individual connections
+that contain requests with objectionable content.</li>
+<li>Immediate reset - suspends traffic coming from a source immediately, for
+a short period of time</li>
+</ol>
+</li>
+<li>
+<p>Which DNS censorship technique is susceptible to overblocking?</p>
+<ul>
+<li>Packet dropping</li>
+</ul>
+</li>
+<li>
+<p>What are the strengths and weaknesses of “packet dropping” DNS censorship
+technique?</p>
+<ul>
+<li>Strengths
+<ul>
+<li>Easy to implement</li>
+<li>Low cost</li>
+</ul>
+</li>
+<li>Weaknesses
+<ul>
+<li>Maintenance of the blocklist</li>
+<li>Overblocking</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What are the strengths and weaknesses of “DNS poisoning” DNS censorship
+technique?</p>
+<ul>
+<li>Strengths
+<ul>
+<li>No overblocking</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What are the strengths and weaknesses of “content inspection” DNS censorship
+technique?</p>
+<ul>
+<li>Strengths
+<ul>
+<li>Precise censorship</li>
+<li>Flexible</li>
+</ul>
+</li>
+<li>Weaknesses
+<ul>
+<li>Not scalable</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>What are the strengths and weaknesses of “blocking with resets” DNS censorship
+technique?</p>
+<ul>
+<li>None given.</li>
+</ul>
+</li>
+<li>
+<p>What are the strengths and weaknesses of “immediate reset of connections” DNS
+censorship technique?</p>
+<ul>
+<li>None given.</li>
+</ul>
+</li>
+<li>
+<p>Our understanding of censorship around the world is relatively limited. Why is
+it the case? What are the challenges?</p>
+<ol>
+<li>Diverse measurements</li>
+<li>Need for scale</li>
+<li>Identifying the intent to restrict content access</li>
+<li>Ethics and minimizing risks</li>
+</ol>
+</li>
+<li>
+<p>What are the limitations of main censorship detection systems?</p>
+<ul>
+<li>They either no longer exist or rely upon volunteers performing measurements,
+which can cause them to get in trouble with their local governments.</li>
+</ul>
+</li>
+<li>
+<p>What kind of disruptions does Augur focus on identifying?</p>
+<ul>
+<li>This system focuses on IP-based disruptions, not DNS-based manipulations.</li>
+</ul>
+</li>
+<li>
+<p>How does Iris counter the issue of lack of diversity while studying DNS
+manipulation? What are the steps associated with the proposed process?</p>
+<ul>
+<li>Iris uses open DNS resolvers located all over the globe.</li>
+<li>The two main steps are:
+<ol>
+<li>Scanning the Internet's IPv4 space for open DNS resolvers</li>
+<li>Identifying infrastructure DNS resolvers</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>What are the steps involved in the global measurement process using DNS
+resolvers?</p>
+<ol>
+<li>Perform global DNS queries</li>
+<li>Annotating DNS responses with auxiliary information</li>
+<li>Additional PTR and TLS scanning</li>
+</ol>
+</li>
+<li>
+<p>What metrics does Iris use to identify DNS manipulation once data annotation
 is complete? Describe the metrics. Under what condition, do we declare the
-response as being manipulated?</li>
-<li>How to identify DNS manipulation via machine learning with Iris?</li>
-<li>How is it possible to achieve connectivity disruption using routing disruption
-approach?</li>
-<li>How is it possible to achieve connectivity disruption using packet filtering
-approach?</li>
-<li>Explain a scenario of connectivity disruption detection in case when no
-filtering occurs.</li>
-<li>Explain a scenario of connectivity disruption detection in case of the inbound
-blocking.</li>
-<li>Explain a scenario of connectivity disruption detection in case of the
-outbound blocking.</li>
+response as being manipulated?</p>
+<ol>
+<li>Consistency metrics</li>
+<li>Independent verifiability metrics</li>
+</ol>
+<ul>
+<li>If neither of these metrics are satisfied, the response is said to be
+manipulated.</li>
+</ul>
+</li>
+<li>
+<p>How to identify DNS manipulation via machine learning with Iris?</p>
+<ul>
+<li>Not covered.</li>
+</ul>
+</li>
+<li>
+<p>How is it possible to achieve connectivity disruption using routing disruption
+approach?</p>
+<ul>
+<li>Withdrawing previously advertised prefixes using BGP</li>
+</ul>
+</li>
+<li>
+<p>How is it possible to achieve connectivity disruption using packet filtering
+approach?</p>
+<ul>
+<li>Block packets meeting a certain criteria disrupting the normal forwarding
+action.</li>
+</ul>
+</li>
+<li>
+<p>Explain a scenario of connectivity disruption detection in case when no
+filtering occurs.</p>
+<ul>
+<li>When no filtering occurs, the measurement machine will see an increase of
+2 in the IP ID - this means the two hosts communicated</li>
+</ul>
+</li>
+<li>
+<p>Explain a scenario of connectivity disruption detection in case of the inbound
+blocking.</p>
+<ul>
+<li>Traffic from the reflector to the site containing objectionable data is
+blocked. Thus, the IP ID only increases by 1 because the SYN-ACK from the
+site never reaches the reflector.</li>
+</ul>
+</li>
+<li>
+<p>Explain a scenario of connectivity disruption detection in case of the
+outbound blocking.</p>
+<ul>
+<li>Outbound reset packets from the reflector do not reach the site. The site
+will continue to send SYN-ACK packets until it receives an ACK, causing the
+reflector's IP ID to increase by 2 each time.</li>
+</ul>
+</li>
 </ul>
 
                     </main>

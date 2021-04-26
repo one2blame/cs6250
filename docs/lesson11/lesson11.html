@@ -165,40 +165,227 @@
                     <main>
                         <h1><a class="header" href="#lesson-11" id="lesson-11">Lesson 11</a></h1>
 <ul>
-<li>Compare the bit rate for video, photos, and audio.</li>
-<li>What are the characteristics of streaming stored video?</li>
-<li>What are the characteristics of streaming live audio and video?</li>
-<li>What are the characteristics of conversational voice and video over IP?</li>
-<li>How does the encoding of analog audio work (in simple terms)?</li>
-<li>What are the three major categories of VoIP encoding schemes?</li>
-<li>What are the functions that signaling protocols are responsible for?</li>
-<li>What are three QoS VoIP metrics?</li>
-<li>What kind of delays are including in “end-to-end delay”?</li>
-<li>How does “delay jitter” occur?</li>
-<li>What are the mitigation techniques for delay jitter?</li>
-<li>Compare the three major methods for dealing with packet loss in VoIP
-protocols.</li>
-<li>How does FEC (Forward Error Correction) deal with the packet loss in VoIP?
-What are the tradeoffs of FEC?</li>
-<li>How does interleaving deal with the packet loss in VoIP/streaming stored
-audio? What are the tradeoffs of interleaving?</li>
-<li>How does error concealment technique deal with the packet loss in VoIP?</li>
-<li>What developments lead to the popularity of consuming media content over the
-Internet?</li>
-<li>Provide a high-level overview of adaptive video streaming.</li>
-<li>Which protocol is preferred for video content delivery - UDP or TCP? Why?</li>
-<li>What was the original vision of the application-level protocol for video
-content delivery and why was HTTP chosen eventually?</li>
-<li>Summarize how progressive download works.</li>
-<li>How to handle network and user device diversity?</li>
-<li>How does the bitrate adaptation work in DASH?</li>
-<li>What are the goals of bitrate adaptation?</li>
-<li>What are the different signals that can serve as an input to a bitrate
-adaptation algorithm?</li>
-<li>Explain buffer-filling rate and buffer-depletion rate calculation.</li>
-<li>What steps does a simple rate-based adaptation algorithm perform?</li>
-<li>Explain the problem of bandwidth over-estimation with rate-based adaptation.</li>
-<li>Explain the problem of bandwidth under-estimation with rate-based adaptation.</li>
+<li>
+<p>Compare the bit rate for video, photos, and audio.</p>
+<ul>
+<li>Videos have the highest bit rate, with photos being the second and audio
+being last.</li>
+</ul>
+</li>
+<li>
+<p>What are the characteristics of streaming stored video?</p>
+<ul>
+<li>Stored video is streamed, interactive, and has continuous playout.</li>
+</ul>
+</li>
+<li>
+<p>What are the characteristics of streaming live audio and video?</p>
+<ul>
+<li>Similar to streaming stored, however, many simultaneous users are requesting
+the video. Live audio or video is also delay-sensitive.</li>
+</ul>
+</li>
+<li>
+<p>What are the characteristics of conversational voice and video over IP?</p>
+<ul>
+<li>Real-time and delay-sensitive, also loss-tolerant</li>
+</ul>
+</li>
+<li>
+<p>How does the encoding of analog audio work (in simple terms)?</p>
+<ul>
+<li>Quantization, the rough conversion of continuous waves to discrete waves</li>
+</ul>
+</li>
+<li>
+<p>What are the three major categories of VoIP encoding schemes?</p>
+<ol>
+<li>Narrowband</li>
+<li>Broadband</li>
+<li>Multimode</li>
+</ol>
+</li>
+<li>
+<p>What are the functions that signaling protocols are responsible for?</p>
+<ol>
+<li>User location</li>
+<li>Session establishment</li>
+<li>Session negotiation</li>
+<li>Call participation management</li>
+</ol>
+</li>
+<li>
+<p>What are three QoS VoIP metrics?</p>
+<ol>
+<li>end-to-end delay</li>
+<li>jitter</li>
+<li>packet loss</li>
+</ol>
+</li>
+<li>
+<p>What kind of delays are including in “end-to-end delay”?</p>
+<ul>
+<li>Total delay from mouth to ear. This includes:
+<ul>
+<li>The time it takes to encode the audio</li>
+<li>The time it takes to put it in packets</li>
+<li>All the normal sources of network delay that network traffic encounters
+such as queueing delays</li>
+<li>Playback delay which comes from the receiver's playback buffer</li>
+<li>Decoding delay which is the time it takes to reconstruct the signal</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>How does “delay jitter” occur?</p>
+<ul>
+<li>Buffer sizes, queuing delays, network congestion, etc.</li>
+</ul>
+</li>
+<li>
+<p>What are the mitigation techniques for delay jitter?</p>
+<ul>
+<li>Maintaining a buffer called the &quot;jitter buffer&quot; or the &quot;play-out-buffer&quot;.
+This mechanism smooths out or hides the variation in delay between different
+received packets, buffering them and playing them out for decoding at a
+steady rate.</li>
+</ul>
+</li>
+<li>
+<p>Compare the three major methods for dealing with packet loss in VoIP
+protocols.</p>
+<ol>
+<li>Forward Error Concealment (FEC) - transmitting redundant data alongside the
+main transmission, allows the receiver to replace lost data with the
+redundant data.</li>
+<li>Interleaving - Mixing chunks of audio together so that if one set of chunks
+is lost, the lost chunks aren't consecutive.</li>
+<li>Error concealment - basically guessing what the lost audio packet might be.</li>
+</ol>
+</li>
+<li>
+<p>How does FEC (Forward Error Correction) deal with the packet loss in VoIP?
+What are the tradeoffs of FEC?</p>
+<ul>
+<li>Answered above. The more redundant data transmitted, the more bandwidth is
+consumed.</li>
+</ul>
+</li>
+<li>
+<p>How does interleaving deal with the packet loss in VoIP/streaming stored
+audio? What are the tradeoffs of interleaving?</p>
+<ul>
+<li>The receiving side has to wait longer to receive consecutive chunks of audio
+, increasing latency.</li>
+</ul>
+</li>
+<li>
+<p>How does error concealment technique deal with the packet loss in VoIP?</p>
+<ul>
+<li>Answered above.</li>
+</ul>
+</li>
+<li>
+<p>What developments lead to the popularity of consuming media content over the
+Internet?</p>
+<ul>
+<li>Bandwidth for the core network and last-mile access links have increased
+over the years.</li>
+<li>Compression technologies have become more efficient.</li>
+</ul>
+</li>
+<li>
+<p>Provide a high-level overview of adaptive video streaming.</p>
+</li>
+<li>
+<p>Which protocol is preferred for video content delivery - UDP or TCP? Why?</p>
+<ul>
+<li>TCP provides reliability, congestion control.</li>
+</ul>
+</li>
+<li>
+<p>What was the original vision of the application-level protocol for video
+content delivery and why was HTTP chosen eventually?</p>
+<ul>
+<li>Allows the server to be stateless and the intelligence to download the video
+is left to the client. Allows content provides to use the already existing
+CDN. Bypasses middleboxes and firewalls because HTTP is well-known.</li>
+</ul>
+</li>
+<li>
+<p>Summarize how progressive download works.</p>
+<ul>
+<li>The client sends byte-range requests for part of the video, instead of
+requesting the entire video. The client pre-fetches some video and stores it
+in the playout buffer.</li>
+</ul>
+</li>
+<li>
+<p>How to handle network and user device diversity?</p>
+<ul>
+<li>Using bitrate adaptation - avoids using one static bitrate. Allows clients
+to determine the bitrate and then increase / decrease based upon network
+conditions.</li>
+</ul>
+</li>
+<li>
+<p>How does the bitrate adaptation work in DASH?</p>
+<ul>
+<li>Dynamic Streaming over HTTP (DASH) just uses dynamic bitrate adaptation.
+Videos are divided into chunks and encoded at multiple bit rates. The client
+adapts the quality video / bitrate it's requesting from the server based upon
+network conditions.</li>
+</ul>
+</li>
+<li>
+<p>What are the goals of bitrate adaptation?</p>
+<ol>
+<li>Low or zero re-buffering</li>
+<li>High video quality</li>
+<li>Low video quality variations</li>
+<li>Low startup latency</li>
+</ol>
+</li>
+<li>
+<p>What are the different signals that can serve as an input to a bitrate
+adaptation algorithm?</p>
+<ul>
+<li>Network throughput</li>
+<li>Video buffer</li>
+</ul>
+</li>
+<li>
+<p>Explain buffer-filling rate and buffer-depletion rate calculation.</p>
+<ul>
+<li>The network bandwidth divided by the chunk bitrate is the buffer-filling
+rate.</li>
+<li>The buffer-depletion rate or the output rate is simply 1 (1 second). How
+fast can we watch video.</li>
+</ul>
+</li>
+<li>
+<p>What steps does a simple rate-based adaptation algorithm perform?</p>
+<ul>
+<li>Estimation of future bandwidth</li>
+<li>Quantization is the continuous throughput mapped to a discrete bitrate</li>
+</ul>
+</li>
+<li>
+<p>Explain the problem of bandwidth over-estimation with rate-based adaptation.</p>
+<ul>
+<li>Client requests high quality video, however, the bandwidth has dropped
+tremendously - causes the video buffer to deplete. The player takes time to
+converge to the correct bandwidth.</li>
+</ul>
+</li>
+<li>
+<p>Explain the problem of bandwidth under-estimation with rate-based adaptation.</p>
+<ul>
+<li>Under-estimation can cause the network bandwidth to be monopolized by a
+greedier client.</li>
+</ul>
+</li>
 </ul>
 
                     </main>

@@ -165,36 +165,208 @@
                     <main>
                         <h1><a class="header" href="#lesson-12" id="lesson-12">Lesson 12</a></h1>
 <ul>
-<li>What is the drawback to using the traditional approach of having a single,
-publicly accessible web server?</li>
-<li>What is a CDN?</li>
-<li>What are the six major challenges that Internet applications face?</li>
-<li>What are the major shifts that have impacted the evolution of the Internet
-ecosystem?</li>
-<li>Compare the “enter deep” and “bring home” approach of CDN server placement.</li>
-<li>What is the role of DNS in the way CDN operates?</li>
-<li>What are the two main steps in CDN server selection?</li>
-<li>What is the simplest approach to select a cluster? What are the limitations of
-this approach?</li>
-<li>What metrics are could be considered when using measurements to select a cluster?</li>
-<li>How are the metrics for cluster selection obtained?</li>
-<li>Explain the distributed system that uses a 2-layered system. What are the
-challenges of this system?</li>
-<li>What are the strategies for server selection? What are the limitations of
-these strategies?</li>
-<li>What is consistent hashing? How does it work?</li>
-<li>Why would a centralized design with a single DNS server not work?</li>
-<li>What are the main steps that a host takes to use DNS?</li>
-<li>What are the services offered by DNS, apart from hostname resolution?</li>
-<li>What is the structure of DNS hierarchy? Why does DNS use a hierarchical
-scheme?</li>
-<li>What is the difference between iterative and recursive DNS queries?</li>
-<li>What is DNS caching?</li>
-<li>What is a DNS resource record?</li>
-<li>What are the most common types of resource records?</li>
-<li>Describe the DNS message format.</li>
-<li>What is IP Anycast?</li>
-<li>What is HTTP Redirection?</li>
+<li>
+<p>What is the drawback to using the traditional approach of having a single,
+publicly accessible web server?</p>
+<ol>
+<li>Users are located all across the globe, interruptions for geographically
+separated users can be prevalent</li>
+<li>Viral videos will cause the server to be overloaded</li>
+<li>Single point of failure in the case of a natural disaster</li>
+</ol>
+</li>
+<li>
+<p>What is a CDN?</p>
+<ul>
+<li>Content Distribution Network - networks of multiple, geographically
+distributed servers and/or data centers with copies of content that direct
+users to a server or server cluster that can best serve the user's request.</li>
+</ul>
+</li>
+<li>
+<p>What are the six major challenges that Internet applications face?</p>
+<ol>
+<li>Peering point congestion</li>
+<li>Inefficient routing protocols</li>
+<li>Unreliable networks</li>
+<li>Inefficient communication protocols</li>
+<li>Scalability</li>
+<li>Application limitations and slow rate of change adoption</li>
+</ol>
+</li>
+<li>
+<p>What are the major shifts that have impacted the evolution of the Internet
+ecosystem?</p>
+<ol>
+<li>Increased demand for online content, especially videos</li>
+<li>Topological flattening of the Internet</li>
+</ol>
+</li>
+<li>
+<p>Compare the “enter deep” and “bring home” approach of CDN server placement.</p>
+<ul>
+<li>Enter deep - phrase used to describe placing CDNs deep into the access
+networks of the world. Makes the distance between the user and the closest
+server cluster as small as possible. Downside is that it's difficult to manage
+and maintain so many clusters.</li>
+<li>Bring home - place fewer, larger clusters at key points - less servers to
+maintain but the users will experience higher delay and lower throughput</li>
+</ul>
+</li>
+<li>
+<p>What is the role of DNS in the way CDN operates?</p>
+<ul>
+<li>DNS servers will consult local DNS servers for the ISP / CDN and determine
+the CDN that contains the requested video. The DNS will proceed to provide the
+client with the IP address of the CDN cluster / server containing their
+requested content.</li>
+</ul>
+</li>
+<li>
+<p>What are the two main steps in CDN server selection?</p>
+<ol>
+<li>Mapping the client to a cluster</li>
+<li>Selecting a server from the cluster</li>
+</ol>
+</li>
+<li>
+<p>What is the simplest approach to select a cluster? What are the limitations of
+this approach?</p>
+<ul>
+<li>Selecting the geographically closest cluster</li>
+<li>Selecting the geographically closest cluster is actually picking the closest
+cluster to the LDNS which might not be the closest to the client.</li>
+<li>The closest cluster might not have the best performance either.</li>
+</ul>
+</li>
+<li>
+<p>What metrics are could be considered when using measurements to select a
+cluster?</p>
+<ul>
+<li>The end-to-end metrics to be considered for cluster selection are delay and
+bandwidth.</li>
+</ul>
+</li>
+<li>
+<p>How are the metrics for cluster selection obtained?</p>
+<ul>
+<li>Active metric collection through probing, pinging.</li>
+<li>Passive metric collection to track network conditions.</li>
+</ul>
+</li>
+<li>
+<p>Explain the distributed system that uses a 2-layered system. What are the
+challenges of this system?</p>
+<ul>
+<li>The cluster selection strategy proposes requires a centralized controller
+that has a real-time view of the network conditions - difficult to do given
+the scale of today's networks.</li>
+<li>This model also needs to have data for different subnet-cluster pairs. Some
+clients will be deliberately routed to sub-optimal clusters.</li>
+</ul>
+</li>
+<li>
+<p>What are the strategies for server selection? What are the limitations of
+these strategies?</p>
+<ul>
+<li>A server could be assigned randomly. Not optimal because a highly stressed
+server could be selected randomly.</li>
+<li>Load balancing could be used, but also not optimal</li>
+</ul>
+</li>
+<li>
+<p>What is consistent hashing? How does it work?</p>
+<ul>
+<li>Distributed hash table used to balance load, assigning roughly the same
+number of content IDs and requires relatively little movement of these
+content IDs when nodes join and leave the system.</li>
+</ul>
+</li>
+<li>
+<p>Why would a centralized design with a single DNS server not work?</p>
+<ul>
+<li>Introduces a single point of failure</li>
+</ul>
+</li>
+<li>
+<p>What are the main steps that a host takes to use DNS?</p>
+<ol>
+<li>The user host runs the client side of the DNS application</li>
+<li>The browser extracts the hostname and passes it to the client side of the
+DNS application</li>
+<li>DNS Client sends a query containing the hostname of DNS</li>
+<li>DNS Client eventually receives a reply which includes the IP address of the
+hostname</li>
+<li>As soon as the host receives the IP address, it can initiate a TCP
+connection to the HTTP server located at that IP</li>
+</ol>
+</li>
+<li>
+<p>What are the services offered by DNS, apart from hostname resolution?</p>
+<ol>
+<li>Mail server / host aliasing</li>
+<li>Load distribution</li>
+</ol>
+</li>
+<li>
+<p>What is the structure of DNS hierarchy? Why does DNS use a hierarchical
+scheme?</p>
+<ul>
+<li>The DNS hierarchy solves the scalability problem.</li>
+<li>THe hierarchy has root servers, top level domain servers, authoritative
+servers, and local DNS servers.</li>
+</ul>
+</li>
+<li>
+<p>What is the difference between iterative and recursive DNS queries?</p>
+<ul>
+<li>Iterative - the client is referred to a different DNS server in the chain
+until it can resolve the request</li>
+<li>Recursive - each DNS server will resolve the hostname on behalf of the
+client, client doesn't have to submit more than one request</li>
+</ul>
+</li>
+<li>
+<p>What is DNS caching?</p>
+<ul>
+<li>Saving hostname resolutions locally</li>
+</ul>
+</li>
+<li>
+<p>What is a DNS resource record?</p>
+<ul>
+<li>A method of storing the hostname to IP address resolution</li>
+</ul>
+</li>
+<li>
+<p>What are the most common types of resource records?</p>
+<ul>
+<li>Type A - domain name and IP address</li>
+<li>Type NS - domain name and appropriate authoritative DNS server</li>
+<li>Type CNAME - alias hostname and canonical name</li>
+<li>Type MX - alias hostname of a mail server and the canonical name of the
+mail server</li>
+</ul>
+</li>
+<li>
+<p>Describe the DNS message format.</p>
+</li>
+<li>
+<p>What is IP Anycast?</p>
+<ul>
+<li>Route a client to the closest server as determined by BGP. Assigns the
+same IP address to multiple servers and lets BGP handle getting the client
+to the closest server.</li>
+</ul>
+</li>
+<li>
+<p>What is HTTP Redirection?</p>
+<ul>
+<li>Just sending a client a 300-level code to request the content from a
+different server. Useful for load balancing, doesn't require central
+coordination.</li>
+</ul>
+</li>
 </ul>
 
                     </main>
