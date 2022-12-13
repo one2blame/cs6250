@@ -7,3 +7,7 @@ used for networking research, today.
 
 [Here](https://omscs.gatech.edu/cs-6250-computer-networks) is the official
 course webpage.
+
+## Projects
+
+I worked on each project for this course in a separate repository. Each project is added to this repository as a submodule. The submodules in this repository are private to uphold the Georgia Institute of Technology Academic Honor Code.
